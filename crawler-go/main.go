@@ -141,12 +141,12 @@ func makeRecord(record, membership string) string {
 		nickName := first[0:index2]
 		id := first[index2+1 : index3]
 
-		ret += `{` + "\n" +
-			"\t" + `"id" : "` + id + `"` + "\n" +
-			"\t" + `"membership" : "` + membership + `"` + "\n" +
-			"\t" + `"nickName : "` + nickName + `"` + "\n" +
-			"\t" + `"text : "` + text + `"` + "\n" +
-			`},` + "\n"
+		ret += `{` +
+			`"id" : "` + id + `", ` +
+			`"membership" : "` + membership + `", ` +
+			`"nickName" : "` + nickName + `", ` +
+			`"text" : "` + text + `"` +
+			`}` + "\n"
 
 		//fmt.Println(ret)
 	}
