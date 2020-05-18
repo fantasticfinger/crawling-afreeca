@@ -9,8 +9,8 @@
 - React.js (대쉬보드)
 
 ## 데이터 플로우
-> Go crawler > kadka > elasricsearch   > dashboard
-> 			 >        Mysql            > dashboard
+> 채팅 내역 : Go crawler > kafka > elasricsearch   > dashboard  
+> 메타데이터 :Go crawler > Mysql >  dashboard 
 
 ## 기능
 - 로그인
@@ -33,5 +33,6 @@
 - 8080 : adminer (mysql 대쉬보드)
 - 8081 : crawler
 - 9200 : elastcsearch
-- kafka : 9002
-- zookeeper : 2181
+- 9092 : kafka
+- 2181 : zookeeper
+- 3306 : mysql 
