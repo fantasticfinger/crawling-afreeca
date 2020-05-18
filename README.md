@@ -1,15 +1,17 @@
-# 크롤링된 (아프리카tv) 채팅내역 열람 대쉬보드
-
-## 프로젝트 목적 및 배경
-- 데이터를 이용한 대시보기 제작해보기
-- Css-in-Js, Hooks 기술 적용하기
+# 아프리카Tv 채팅 크롤링 데이터 
 
 ## 기술스택
-- React.js (view, controller 구상)
-- Redux (전역 state 관리)
-- Hooks (state 컨트롤)
-- Css-in-Js (js로 css 제작)
-- jest (테스트)
+- Go (Crawling)
+- Mysql
+- kafka
+- elasticsearch
+- logstash
+- React.js (대쉬보드)
+
+## 데이터 플로우
+> Go crawler > kadka > elasricsearch   > dashboard
+> 			 >        Mysql            > dashboard
+
 ## 기능
 - 로그인
 - 회원가입
@@ -25,3 +27,11 @@
 		- 일반사용자 목록 조회
 			- 일반사용자 제거
 ---
+
+
+### port 정리
+- 8080 : adminer (mysql 대쉬보드)
+- 8081 : crawler
+- 9200 : elastcsearch
+- kafka : 9002
+- zookeeper : 2181
