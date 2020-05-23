@@ -1,2 +1,2 @@
 
-INSERT INTO user VALUES (1,'fantasticfinger','qwe123');
+INSERT INTO user VALUES (1,'foo','bar','');
