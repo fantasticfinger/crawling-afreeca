@@ -25,7 +25,7 @@ public class User implements UserDetails {
     @Column
     private String name;
     @Column
-    private String pw;
+    private String password;
     @Column
     private String refresh_token;
 
@@ -42,7 +42,7 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return pw;
+        return password;
     }
 
     @Override

@@ -82,8 +82,7 @@ func main() {
 	// // db 차후에 닫기
 	defer db.Close()
 
-	query := `INSERT INTO rooms(id, date) VALUES ('` + bjId + `','` + date + `');`
-	db.Exec(query)
+	query := `INSERT IGNORE INTO rooms(id, date) VALUES ('` + bjId + `','` + date + `');`
 
 	filePath += bjId
 	filePath += "_"
@@ -116,7 +115,7 @@ func main() {
 		}
 
 		if records != "" {
-			//WriteToFile(filePath, records)
+			WriteToFile(filePath, records)
 			//WriteToKafka(records)
 		}
 
