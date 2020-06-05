@@ -1,16 +1,17 @@
 package com.example.dashboardserver.Controller;
 
-import com.example.dashboardserver.Security.UserRepository;
-import com.example.dashboardserver.Security.User;
+import com.example.dashboardserver.Repository.UserRepository;
+import com.example.dashboardserver.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.Map;
 
 @RestController
-@ResponseBody
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -19,9 +20,8 @@ public class UserController {
     private UserRepository userRepository;
 
 
-
-    @PostMapping("/user")
-    public int signUp(@RequestBody Map<String, String> user){
+    @PostMapping("")
+    public int signUp(@RequestBody Map<String, String> user, HttpServletResponse response){
         User u = User.builder()
                 .name(user.get("name"))
                 .password(passwordEncoder.encode(user.get("password")))
@@ -31,6 +31,16 @@ public class UserController {
         return userRepository.save(u).getId();
     }
 
-
+    @DeleteMapping("/{name}")
+    public int removeId(@PathVariable("name") String name){
+        System.out.println("id: "+ name);
+        User member = userRepository.findByName(name);
+        if(member == null){
+            return -402;
+        }
+        System.out.println(member.getId());
+        userRepository.deleteById( member.getId());
+        return -201;
+    }
 
 }

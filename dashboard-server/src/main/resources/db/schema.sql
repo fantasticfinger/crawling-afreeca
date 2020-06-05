@@ -10,3 +10,9 @@ user_id INT,
 roles VARCHAR(256)
 );
 
+create table room (
+    id INT AUTO_INCREMENT,
+    uid VARCHAR(256),
+    date DATE
+
+);

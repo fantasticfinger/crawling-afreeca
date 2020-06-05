@@ -1,7 +1,6 @@
 package com.example.dashboardserver.Service;
 
-import com.example.dashboardserver.Security.UserRepository;
-import lombok.RequiredArgsConstructor;
+import com.example.dashboardserver.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
