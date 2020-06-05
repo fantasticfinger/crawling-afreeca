@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login snapshot 1`] = `
+<div>
+  <input
+    class="sc-AxirZ jfUsbt"
+    name="name"
+    placeholder="아이디"
+    type="text"
+    value=""
+  />
+  <input
+    class="sc-AxirZ jfUsbt"
+    name="password"
+    placeholder="비밀번호"
+    type="password"
+    value=""
+  />
+  <button
+    class="sc-AxjAm kXwayF"
+  >
+    로 그 인
+  </button>
+  <button
+    class="sc-AxjAm kXwayF"
+  >
+    회원가입
+  </button>
+</div>
+`;

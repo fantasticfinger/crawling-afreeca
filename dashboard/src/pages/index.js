@@ -1,15 +1,6 @@
-// import * as pages from './*.js';
-var fs = require('fs');
-
-let pages;
-function getPage(){
-    console.log(__dirname);
-    
-    fs.readdir(__dirname, function(error, filelist){
-        console.log(filelist);
-    })
-    
-}
-
-
-export default getPage;
+export {default as Test} from './test'
+export {default as Login} from './login'
+export {default as Home} from './home'
+export {default as Rooms} from './rooms'
+export {default as Room} from './room'
+export {default as Sign} from './sign'

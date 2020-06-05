@@ -1,11 +1,11 @@
 import React from 'react'  
-
+import PageTemplate from '../components/commons/pageTemplate'
 
 function Test(){
     return (
-        <div>
+        <PageTemplate>
             Test
-        </div>
+        </PageTemplate>
     )
 }
 
