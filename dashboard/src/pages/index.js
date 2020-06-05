@@ -1,0 +1,6 @@
+export {default as Test} from './test'
+export {default as Login} from './login'
+export {default as Home} from './home'
+export {default as Rooms} from './rooms'
+export {default as Room} from './room'
+export {default as Sign} from './sign'
