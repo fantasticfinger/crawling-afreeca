@@ -2,16 +2,18 @@ package main
 
 import (
 	"context"
+	"database/sql"
 	"fmt"
 	"os"
 	"strings"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/segmentio/kafka-go"
 	"github.com/tebeka/selenium"
 )
 
-var baseURL string = "http://play.afreecatv.com/kjs951006/223776155"
+var baseURL string = "http://play.afreecatv.com/dlghfjs/223809611"
 var filePath string = "/Users/like.jm/go/src/github.com/fantasticfinger/crawler/data/"
 
 func main() {
@@ -21,7 +23,7 @@ func main() {
 	const (
 		seleniumPath     = "/Users/like.jm/go/src/github.com/tebeka/selenium/vendor/selenium-server.jar"
 		chromeDriverPath = "/Users/like.jm/go/src/github.com/tebeka/selenium/vendor/chromedriver"
-		port             = 8080
+		port             = 8081
 	)
 	opts := []selenium.ServiceOption{
 		selenium.ChromeDriver(chromeDriverPath),
@@ -70,6 +72,18 @@ func main() {
 
 	date := getDate(yymmdd)
 
+	// sql.DB 객체 db 생성
+	db, err := sql.Open("mysql", "root:qwe123@tcp(127.0.0.1:3306)/crawl-aftv")
+
+	if err != nil || db.Ping() != nil {
+		panic(err.Error())
+	}
+
+	// // db 차후에 닫기
+	defer db.Close()
+
+	query := `INSERT IGNORE INTO rooms(id, date) VALUES ('` + bjId + `','` + date + `');`
+
 	filePath += bjId
 	filePath += "_"
 	filePath += date
@@ -102,7 +116,7 @@ func main() {
 
 		if records != "" {
 			WriteToFile(filePath, records)
-			WriteToKafka(records)
+			//WriteToKafka(records)
 		}
 
 	}
@@ -141,12 +155,12 @@ func makeRecord(record, membership string) string {
 		nickName := first[0:index2]
 		id := first[index2+1 : index3]
 
-		ret += `{` + "\n" +
-			"\t" + `"id" : "` + id + `"` + "\n" +
-			"\t" + `"membership" : "` + membership + `"` + "\n" +
-			"\t" + `"nickName : "` + nickName + `"` + "\n" +
-			"\t" + `"text : "` + text + `"` + "\n" +
-			`},` + "\n"
+		ret += `{` +
+			`"id" : "` + id + `", ` +
+			`"membership" : "` + membership + `", ` +
+			`"nickName" : "` + nickName + `", ` +
+			`"text" : "` + text + `"` +
+			`}` + "\n"
 
 		//fmt.Println(ret)
 	}
@@ -158,13 +172,10 @@ func makeRecord(record, membership string) string {
 func WriteToKafka(records string) {
 	topic := "test"
 	partition := 0
-	//fmt.Println("111111111111111111111111111")
 	conn, err := kafka.DialLeader(context.Background(), "tcp", "localhost:9092", topic, partition)
-	//fmt.Println("222222222222222222222222222222")
 	if err != nil {
 		panic(err)
 	}
-	//fmt.Println("333333333333333333333333")
 	conn.SetWriteDeadline(time.Now().Add(10 * time.Second))
 	conn.WriteMessages(
 		kafka.Message{Value: []byte(records)},

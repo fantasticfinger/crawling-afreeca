@@ -1,0 +1,24 @@
+version: "3"
+services:
+    mysql:
+        # 컨테이너 이름을 주고 싶다면 작성한다
+        # container_name: test_database
+        container_name: mysql
+        image: mysql:8.0.20
+        environment:
+          MYSQL_DATABASE: test_db
+          MYSQL_ROOT_PASSWORD: qwe123
+          MYSQL_ROOT_HOST: '%'
+        #var/lib/mysql에 데이터 저장됨 연동시켜놓으면 db 마운트 가능
+        volumes:
+            - "./init/:/docker-entrypoint-initdb.d"
+            #- /home/계정/docker/mysql/data:/var/lib/mysql
+        
+        ports:
+          - 3306:3306
+
+    adminer:
+        image: adminer
+        container_name: adminer
+        ports:
+           - 8080:8080

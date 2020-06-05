@@ -11,4 +11,4 @@
 
 ### 참고한 사이트
 1. docker-compose 작성 참고 : https://miiingo.tistory.com/196
-2. Kafka의 컨슈머 및 프로듀서 도커에서 동작중인지 확인하기 위해 
+2. Kafka의 컨슈머 및 프로듀서 도커에서 동작중인지 확인하기 위해  : https://miiingo.tistory.com/196

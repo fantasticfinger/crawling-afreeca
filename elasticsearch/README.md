@@ -10,8 +10,9 @@
 1. err - 시작할때 ) no new native processes can be started
 > 싱글노드 실행시 발생하는 문제  
 > Solution > discovery.type = single.node 
+> docker run -d --name elasticsearch -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.7.0
    
-2. err - curl로 data Put) 
+1. err - curl로 data Put) 
 >{  
   "error" : "Content-Type header[applicationx-www-form-urlencoded] is not supported",  
   "status" : 406  
