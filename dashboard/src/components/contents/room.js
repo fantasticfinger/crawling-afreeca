@@ -3,7 +3,12 @@ import styled from 'styled-components'
 import colors from '../../styles/colors'
 import SearchInput from '../commons/searchInput'
 import SearchButton from '../commons/searchButton'
+import SearchBox from '../commons/searchBox'
 
+const RoomSearchBox = styled(SearchBox)`
+    right:0;
+    background-color:red;
+`
 const RoomWrapper = styled.div`
     width: 100%;
     background-color : white;
@@ -95,8 +100,7 @@ const UserTexts = ({list})=>{
                         채팅목록
                     </div>
                     <div className='searchBox'>
-                        <SearchInput/>
-                        <SearchButton>찾기</SearchButton>
+                        <RoomSearchBox/>
                     </div>
                 </ContentTitle>
             </TextTitle>

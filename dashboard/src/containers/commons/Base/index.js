@@ -2,7 +2,7 @@ import React,{useState, createContext,useEffect} from 'react';
 
 const BaseContext = createContext({
     state:{
-        name: null,
+        name:'',
         logged : false,
     },
     actions :{
@@ -15,9 +15,10 @@ const BaseProvider =({children})=>{
     const [name,setName] = useState('');
     const [logged,setLogged] = useState(false);
 
-    useEffect(()=>{
-        setName('123')
-    },[name])
+    // useEffect(()=>{
+        
+    // },[name])
+
     const value = {
         state : {name,logged},
         actions : {setName ,setLogged}

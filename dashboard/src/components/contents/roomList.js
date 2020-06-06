@@ -1,11 +1,11 @@
 import React from 'react'; 
-import styled from 'styled-components';
 import PageNation from './pagenation';
+import styled from 'styled-components';
 import colors from '../../styles/colors';
 import SearchInput from '../commons/searchInput'
 import SearchButton from '../commons/searchButton'
 
-const RoomsWrapper = styled.div`
+const RoomListWrapper = styled.div`
     height : 50%;
     background-color: white;
 
@@ -72,7 +72,7 @@ const TableItem = ({list})=>{
 
 export default function rooms(){
     return (
-        <RoomsWrapper>
+        <RoomListWrapper>
             <SearchBox>
                 <div className='searchWrapper'>
                     <SearchInput placeholder='bj이름으로 검색'/>
@@ -90,7 +90,7 @@ export default function rooms(){
                 <PageNation start={1} end = {10}/>
                 
             </RoomstableWrapper>
-        </RoomsWrapper>
+        </RoomListWrapper>
     )
 }
 
