@@ -1,5 +1,6 @@
 package com.example.dashboardserver.Security;
 
+import com.example.dashboardserver.Model.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

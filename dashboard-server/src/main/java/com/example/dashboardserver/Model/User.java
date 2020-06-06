@@ -1,4 +1,4 @@
-package com.example.dashboardserver.Security;
+package com.example.dashboardserver.Model;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,6 +39,8 @@ public class User implements UserDetails {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
+
+    public int getId(){ return id; }
 
     @Override
     public String getPassword() {
