@@ -8,7 +8,6 @@ import SearchButton from '../commons/searchButton'
 const RoomListWrapper = styled.div`
     height : 50%;
     background-color: white;
-
 `
 const SearchBox = styled.div`
     position: relative;
@@ -43,7 +42,6 @@ const TableRow = styled.div`
     height: 35px;
     border-bottom: 1px solid #dee2e6;
     padding-top:10px;
-    
 `
 const TableRowTitle = styled(TableRow)`
     background-color : #dee2e6;

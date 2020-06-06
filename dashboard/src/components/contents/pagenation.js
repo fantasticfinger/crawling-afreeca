@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useMemo} from 'react';
 import styled from 'styled-components'
 import colors from '../../styles/colors'
 
@@ -32,10 +32,12 @@ const PageNumbers = ({start,end,link})=>{
 
     return arr;
 }
-export default function Pagenation({start,end,link}){
+ function Pagenation({currentPage,lastPage,link}){
     return(
         <PagenationWrapper>
-            <PageNumbers start ={start} end ={end}/>
+            <PageNumbers currentPage ={currentPage} lastPage ={lastPage}/>
         </PagenationWrapper>
     )
 }
+
+export default Pagenation

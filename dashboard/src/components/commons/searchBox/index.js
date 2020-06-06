@@ -17,9 +17,6 @@ const SearchInput = styled.input`
     border: 0;
     border-bottom : 1px solid ${colors.gray300};
 `
-const SearchBoxWrapper = styled.div`
-    position : absolute;
-`
 
 const SearchBox = ({onChange,onClick})=>{
     return (

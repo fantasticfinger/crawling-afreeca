@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import colors from '../../styles/colors';
-
+import React from 'react';
 
 const SearchBox = styled.div`
     position: relative;
@@ -23,3 +23,5 @@ function RoomListSearchBox({children}) {
         </SearchBox>
     )
 }
+
+export default RoomListSearchBox
