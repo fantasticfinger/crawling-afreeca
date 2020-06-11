@@ -10,10 +10,10 @@ function App() {
           <Route exact path='/main/home'>
             <Pages.Home />
           </Route>
-          <Route exact path='/main/rooms'>
+          <Route exact path='/main/rooms/:page'>
             <Pages.Rooms />
           </Route>
-          <Route exact path='/main/rooms/:id'>
+          <Route exact path='/main/room/:id'>
             <Pages.Room />
           </Route>
           <Route exact path='/'>

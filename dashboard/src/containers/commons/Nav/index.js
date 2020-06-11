@@ -13,7 +13,7 @@ const NavLis = React.memo(()=>{
         {
             cn: 'fas fa-list',
             text : '채팅목록조회',
-            link : '/main/rooms'
+            link : '/main/rooms/1'
         }
     ];
     return li_info.map(item=>{

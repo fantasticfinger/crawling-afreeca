@@ -1,14 +1,13 @@
 import axios from 'axios'
-const url = 'localhost:8080/auth'
+const url = 'http://localhost:8080/auth'
 
 
-export const login = (name,password)=>{
-    return new Promise(async(resolve,reject)=>{
+export const login = async(name,password)=>{
+    // return new Promise(async(resolve,reject)=>{
         const data = new FormData();
         data.append('name',name)
-            .append('password',password)
-        const res= await axios({
-            method : 'post',
+        data.append('password',password)
+        return await axios.post({
             url : url,
             data :data,
             withCredentials:true,
@@ -17,7 +16,8 @@ export const login = (name,password)=>{
                 'Access-Control-Allow-Origin':'*',
             }
         }).then(res => res.data)
-        resolve(res)
-    })
+    //     resolve(res)
+    // })
+    
 }
 
