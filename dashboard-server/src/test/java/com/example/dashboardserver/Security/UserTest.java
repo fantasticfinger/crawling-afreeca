@@ -16,7 +16,7 @@ public class UserTest {
                 .build();
 
         final String name = user.getName();
-        assertEquals("qqq111",name);
+        assertEquals("qqq11",name,"Is same User");
 
     }
 
