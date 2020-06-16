@@ -18,10 +18,10 @@ const SearchInput = styled.input`
     border-bottom : 1px solid ${colors.gray300};
 `
 
-const SearchBox = ({onChange,onClick})=>{
+const SearchBox = ({ onChange, onClick, value, name }) => {
     return (
         <>
-            <SearchInput onChange={onChange}/>
+            <SearchInput onChange={onChange} value={value} name={name} />
             <SearchButton onClick={onClick}>찾기</SearchButton>
         </>
     )

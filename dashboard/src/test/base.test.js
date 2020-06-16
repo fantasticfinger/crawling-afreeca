@@ -1,13 +1,16 @@
 import React,{useContext} from 'react'
 import { render ,fireEvent} from '@testing-library/react'
 import BaseContext,{BaseProvider} from '../containers/commons/Base'
-const TestPage = ({children})=>{
-    return (
-        <BaseProvider>
-            {children}
-        </BaseProvider>
-    )
-}
+
+jest.mock('react-router-dom',()=>({
+    useHistory: () => ({
+        push: jest.fn(),
+    }),
+    useLocation:()=>({
+        pathname: '/sign'
+    })
+}))
+
 function TestUnit(){
     const {state,actions} = useContext(BaseContext);
     const handleInput = ({target:{value}})=>{
@@ -25,7 +28,7 @@ function TestUnit(){
 }
 
 test('setName',()=>{
-    const {container} = render(<TestPage><TestUnit/></TestPage>)
+    const {container} = render(<BaseProvider><TestUnit/></BaseProvider>)
     const input = container.querySelector('#input')
     const event = {
         target : {
@@ -36,7 +39,7 @@ test('setName',()=>{
     expect(input).toHaveValue('hello')
 })
 test('logged',()=>{
-    const {container} = render(<TestPage><TestUnit/></TestPage>)
+    const {container} = render(<BaseProvider><TestUnit/></BaseProvider>)
     const button = container.querySelector('#button')
     expect(button).toHaveValue('false')
     fireEvent.click(button);

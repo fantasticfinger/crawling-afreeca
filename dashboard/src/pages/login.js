@@ -1,12 +1,11 @@
-import AuthTemp from '../components/auths/authTem'
-import LoginContainer from '../containers/auths/Login'
+import AuthTemp from 'components/auths/commons/authTem/index.js'
+import LoginComponent from 'components/auths/login'
 import React from 'react'
 
-export default function loginPage(){
+export default function loginPage() {
     return (
         <AuthTemp>
-            
-            <LoginContainer/>
+            <LoginComponent />
         </AuthTemp>
     )
 }

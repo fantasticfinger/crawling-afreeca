@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
-import Header from '../../../containers/commons/Header'
-import NavContainer from '../../../containers/commons/Nav'
-import Article from '../../contents'
+import Header from '../header'
+import Nav from '../nav'
+import Article from '../../room'
 import colors from '../../../styles/colors'
 
 const Wrapper = styled.div`
@@ -18,12 +18,12 @@ const Wrapper = styled.div`
 const Scroll = styled.div`
     overflow : scroll;
 `
-function PageTemplate ({children,num}){
-    return(
+function PageTemplate({ children, num }) {
+    return (
         <Wrapper>
-            <NavContainer num ={num}/>
-            <Scroll>
-                <Header/>
+            <Nav num={num} />
+            <Scroll id='scroll-wrapper'>
+                <Header />
                 <Article>{children}</Article>
             </Scroll>
         </Wrapper>
