@@ -6,6 +6,7 @@
 - kafka
 - elasticsearch
 - logstash
+- SpringBoot
 - React.js (대쉬보드)
 
 ## 데이터 플로우
