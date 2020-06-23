@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { useReducer, useEffect } from 'react';
 
 function useAsyncReducer(initState, reducer, callback, ...rest) {

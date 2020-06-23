@@ -81,7 +81,10 @@
       "prettier"
     ],
     "rules": {
-      "react/jsx-filename-extension": 0
+      "react/jsx-filename-extension": 0,
+      "no-unused-vars": 1,
+      "import/no-unresolved": 1,
+      "react/prop-types": 1
     }
   },
   "browserslist": {

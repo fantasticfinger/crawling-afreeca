@@ -1,30 +1,25 @@
-import styled from 'styled-components'
+/* eslint-disable react/jsx-props-no-spreading */
+import styled from 'styled-components';
 import React from 'react';
-import colors from 'styles/colors'
+import colors from 'styles/colors';
 
 const Input = styled.input`
-    width: 300px;
-    height: 40px;
-    border: 0 ;
-    padding:0;
-    padding-left: 10px;
-    font-size: 15px;
-    outline:none;
-    margin: 0 auto;
-    border-bottom: 2px solid ${colors.gray200}; 
-    &+Input{
-        margin-top: 15px auto;
-    }
-    
-`
+  width: 300px;
+  height: 40px;
+  border: 0;
+  padding: 0;
+  padding-left: 10px;
+  font-size: 15px;
+  outline: none;
+  margin: 0 auto;
+  border-bottom: 2px solid ${colors.gray200};
+  & + Input {
+    margin-top: 15px auto;
+  }
+`;
 
-const auth_input = React.memo(({ ...rest }) => {
-    return (
-        <Input
-            {...rest}
-        />
-    )
-})
+const authInput = React.memo(({ ...rest }) => {
+  return <Input {...rest} />;
+});
 
-
-export default auth_input;
+export default authInput;
