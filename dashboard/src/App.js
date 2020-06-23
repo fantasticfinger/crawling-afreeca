@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BaseProvider } from './contexts/BaseContext'
 import * as Pages from './pages'
+
 function App() {
   return (
     <BrowserRouter>

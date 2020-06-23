@@ -8,7 +8,7 @@ export function createAsyncDispatcher(type, promiseFn) {
             const data = await promiseFn(...rest);
             dispatch({
                 type: SUCCESS,
-                data: data,
+                data,
             })
         }
         catch (e) {
@@ -39,10 +39,10 @@ const success = (data) => ({
     error: null,
 });
 
-const error = (error) => ({
+const error = (e) => ({
     loading: false,
     data: null,
-    error: error,
+    error: e,
 });
 
 export function createAsyncHandler(type, key) {

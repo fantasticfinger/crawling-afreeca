@@ -1,23 +1,23 @@
 import React from 'react';
-import styled from 'styled-components'
-import AuthLogo from './authLogo'
+import styled from 'styled-components';
+import AuthLogo from './authLogo';
 
 const AuthBox = styled.div`
-    position:relative;
-    width: 350px;
-    display:grid;
-    background-color : white;
-    flex-direction:row;
-    grid-template-columns:1fr;
-    border-radius : 15px;
-`
+  position: relative;
+  width: 350px;
+  display: grid;
+  background-color: white;
+  flex-direction: row;
+  grid-template-columns: 1fr;
+  border-radius: 15px;
+`;
 
-
-export default function auth_box({ children }) {
-    return (
-        <AuthBox>
-            <AuthLogo />
-            {children}
-        </AuthBox>
-    )
+// eslint-disable-next-line react/prop-types
+export default function authBox({ children }) {
+  return (
+    <AuthBox>
+      <AuthLogo />
+      {children}
+    </AuthBox>
+  );
 }

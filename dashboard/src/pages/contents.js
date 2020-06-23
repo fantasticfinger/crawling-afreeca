@@ -1,11 +1,11 @@
-import React from 'react'
-import PageTem from '../components/commons/pageTemplate'
-import RoomComponent from 'components/articles/contents'
+import React from 'react';
+import RoomComponent from 'components/articles/contents';
+import PageTem from '../components/commons/pageTemplate';
 
 export default function contents() {
-    return (
-        <PageTem num={1}>
-            <RoomComponent />
-        </PageTem>
-    )
+  return (
+    <PageTem num={1}>
+      <RoomComponent />
+    </PageTem>
+  );
 }

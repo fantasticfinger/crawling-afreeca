@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const url = 'http://localhost:8080/auth'
 
 
@@ -13,21 +14,21 @@ export const login = async ({ name, password }) => {
             resolve(data);
         })
     }
-    else {
-        const data = new FormData();
-        data.append('name', name)
-        data.append('password', password)
-        const res = await axios.post({
-            url: url,
-            data: data,
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json;charset-utf-8',
-                'Access-Control-Allow-Origin': '*',
-            }
-        })
-        return res.data;
-    }
+
+    const data = new FormData();
+    data.append('name', name)
+    data.append('password', password)
+    const res = await axios.post({
+        url,
+        data,
+        withCredentials: true,
+        headers: {
+            'Content-Type': 'application/json;charset-utf-8',
+            'Access-Control-Allow-Origin': '*',
+        }
+    })
+    return res.data;
+
 }
 
 export const logout = async () => {
@@ -36,35 +37,16 @@ export const logout = async () => {
             resolve();
         })
     }
-    else {
-        await axios.delete({
-            url: url,
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json;charset-utf-8',
-                'Access-Control-Allow-Origin': '*',
-            }
-        })
-    }
+    const res = await axios.delete({
+        url,
+        withCredentials: true,
+        headers: {
+            'Content-Type': 'application/json;charset-utf-8',
+            'Access-Control-Allow-Origin': '*',
+        }
+    });
+    return res.data;
 }
-
-export const checkLogin = async () => {
-    if (process.env.NODE_ENV === 'development') {
-        const res = await getData()
-        return res;
-    }
-    else {
-        return await axios.get({
-            url: url,
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json;charset-utf-8',
-                'Access-Control-Allow-Origin': '*',
-            }
-        }).then(res => res.data)
-    }
-}
-
 function getData() {
     return new Promise((resolve, resject) => {
         const data = {
@@ -76,3 +58,20 @@ function getData() {
     })
 
 }
+export const checkLogin = async () => {
+    if (process.env.NODE_ENV === 'development') {
+        const res = await getData()
+        return res;
+    }
+    const res = await axios.get({
+        url,
+        withCredentials: true,
+        headers: {
+            'Content-Type': 'application/json;charset-utf-8',
+            'Access-Control-Allow-Origin': '*',
+        }
+    });
+
+    return res.data;
+}
+

@@ -1,11 +1,12 @@
-import AuthTemp from 'components/auths/commons/authTem/index.js'
-import SignComponent from 'components/auths/sign'
-import React from 'react'
+/* eslint-disable import/no-unresolved */
+import React from 'react';
+import AuthTemp from 'components/auths/commons/authTem';
+import SignComponent from 'components/auths/sign';
 
 export default function loginPage() {
-    return (
-        <AuthTemp>
-            <SignComponent />
-        </AuthTemp>
-    )
+  return (
+    <AuthTemp>
+      <SignComponent />
+    </AuthTemp>
+  );
 }
