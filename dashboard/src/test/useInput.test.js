@@ -7,13 +7,8 @@ test('useInput', async () => {
         password: '',
     }
     const { result } = renderHook(() => useInput(initState));
-    const event = {
-        target: {
-            name: 'name',
-            value: 'test'
-        }
-    }
     const [, onChange, reset] = result.current
+
     act(() => {
         onChange({
             target: {
