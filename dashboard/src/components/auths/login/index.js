@@ -55,7 +55,7 @@ function Login() {
         name="password"
         onKeyDown={handleEnterDown}
       />
-      <AuthButton onClick={handleSubmit}>로 그 인</AuthButton>
+      <AuthButton onClick={handleSubmit}>로그인</AuthButton>
       <AuthButton onClick={handleSign}>회원가입</AuthButton>
     </>
   );
