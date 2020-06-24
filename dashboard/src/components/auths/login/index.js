@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React, { useEffect, useCallback } from 'react';
 import useInput from 'hooks/useInput';
 import { useHistory } from 'react-router-dom';
