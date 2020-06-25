@@ -69,6 +69,17 @@ public class User implements UserDetails {
     }
 
     @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", refresh_token='" + refresh_token + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
+
+    @Override
     public boolean isEnabled() {
         return true;
     }
