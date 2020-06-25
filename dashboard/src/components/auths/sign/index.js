@@ -5,6 +5,13 @@ import useInput from 'hooks/useInput';
 import React, { useCallback, useMemo } from 'react';
 import SignLabel from './signLabel';
 
+const SAME_TEXT = '일치합니다.'
+const DIFF_TEXT = '불일치합니다.'
+function isSamePassword(password, checkPassword) {
+  if (password === '' && password === checkPassword) return '';
+  if (password === checkPassword) return SAME_TEXT;
+  return DIFF_TEXT
+}
 function SignComponent() {
   const [{ name, password, checkPassword }, onChange] = useInput({
     name: '',
@@ -16,10 +23,7 @@ function SignComponent() {
   const handleClickSign = useCallback(() => {
     history.push('/');
   }, [history]);
-  const flag = () => {
-    if (password === '' && checkPassword === password) return undefined;
-    return password === checkPassword;
-  };
+  const labelText = useMemo(() => isSamePassword(password, checkPassword), [password, checkPassword])
 
   return (
     <>
@@ -44,7 +48,7 @@ function SignComponent() {
         name="checkPassword"
         onChange={onChange}
       />
-      <SignLabel flag={flag} />
+      <SignLabel labelText={labelText} />
       <AuthButton onClick={handleClickSign}>회원가입</AuthButton>
     </>
   );
