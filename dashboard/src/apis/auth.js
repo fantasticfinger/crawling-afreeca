@@ -2,7 +2,6 @@ import axios from 'axios'
 
 const url = 'http://localhost:8080/auth'
 
-
 export const login = async ({ name, password }) => {
     if (process.env.NODE_ENV === 'development') {
         return new Promise((resolve, resject) => {
@@ -34,10 +33,10 @@ export const login = async ({ name, password }) => {
 export const logout = async () => {
     if (process.env.NODE_ENV === 'development') {
         return new Promise((resolve) => {
-            resolve();
+            resolve(null);
         })
     }
-    const res = await axios.delete({
+    await axios.delete({
         url,
         withCredentials: true,
         headers: {
@@ -45,23 +44,19 @@ export const logout = async () => {
             'Access-Control-Allow-Origin': '*',
         }
     });
-    return res.data;
+    return null
 }
-function getData() {
-    return new Promise((resolve, resject) => {
-        const data = {
-            logged: true,
-            authority: 1,
-            name: "test",
-        }
-        resolve(data);
-    })
 
-}
 export const checkLogin = async () => {
     if (process.env.NODE_ENV === 'development') {
-        const res = await getData()
-        return res;
+        return new Promise((resolve, resject) => {
+            const data = {
+                logged: true,
+                authority: 1,
+                name: "test",
+            }
+            resolve(data);
+        })
     }
     const res = await axios.get({
         url,
