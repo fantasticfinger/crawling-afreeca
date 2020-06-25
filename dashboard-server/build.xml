@@ -1,0 +1,41 @@
+<project name="dashboard-server" default="test">
+    <property file="build.properties"/>
+    <property name="src.dir" location="src"/>
+    <property name="src.java.dir" location="${src.dir}/main"/>
+    <property name="src.test.dir" location="${src.dir}/test"/>
+    <property name="target.dir" location="target"/>
+    <property name="target.classes.java.dir" location="${target.dir}/classes"/>
+    <property name="target.classes.test.dir" location="${target.dir}/test-classes"/>
+
+
+    <target name="compile.java">
+        <mkdir dir="${target.classes.java.dir}"/>
+        <javac destdir="${target.classes.java.dir}">
+            <src path="${src.java.dir}"/>
+        </javac>
+    </target>
+
+    <target name="compile.test" depends="compile.java">
+        <mkdir dir ="${target.classes.test.dir}"/>
+        <javac destdir="${target.classes.test.dir}">
+            <src path="${src.test.dir}"/>
+            <classpath>
+                <pathelement location="${target.classes.java.dir}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="compile" depends="compile.java, compile.test"/>
+
+    <target name="test" depends="compile">
+        <junit printsummary="yes" haltonerror="yes" haltonfailure="yes" fork="yes">
+            <formatter type="plain" usefile="false"/>
+            <test name="com.example.dashboardserver"/>
+            <classpath>
+                <pathelement location = "${target.classes.java.dir}"/>
+                <pathelement location = "${target.classes.test.dir}"/>
+            </classpath>
+        </junit>
+    </target>
+
+</project>
