@@ -2,6 +2,13 @@ import React from 'react';
 import SignComponent from 'components/auths/sign';
 import { render, act, fireEvent } from '@testing-library/react'
 
+const mocks = jest.fn();
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useHistory: () => ({
+        push: mocks,
+    }),
+}));
 describe('<SignComponent/>', () => {
     function setUp() {
         const utils = render(<SignComponent />)
@@ -22,7 +29,7 @@ describe('<SignComponent/>', () => {
         expect(passwordCheckInput).toBeTruthy();
         expect(submitButton).toBeTruthy();
     })
-    //! 아직 안되는 코드
+
     it('change input', () => {
         const { getByText, idInput, passwordInput, passwordCheckInput, label } = setUp();
         fireEvent.change(idInput, {
@@ -43,6 +50,13 @@ describe('<SignComponent/>', () => {
             target: { value: 'asdasd' }
         })
         expect(getByText('불일치합니다.')).toBeTruthy();
+    })
 
+    it('sign Button', async () => {
+        const { submitButton } = setUp();
+        await act(async () => {
+            fireEvent.click(submitButton);
+        });
+        expect(mocks).toBeCalledTimes(1);
     })
 })

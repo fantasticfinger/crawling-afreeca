@@ -1,6 +1,6 @@
 import AuthButton from 'components/auths/commons/authButton';
 import AuthInput from 'components/auths/commons/authInput';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import useInput from 'hooks/useInput';
 import React, { useCallback, useMemo } from 'react';
 import SignLabel from './signLabel';
