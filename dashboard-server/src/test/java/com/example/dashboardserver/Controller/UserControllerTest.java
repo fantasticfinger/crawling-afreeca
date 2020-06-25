@@ -1,6 +1,7 @@
 package com.example.dashboardserver.Controller;
 
 import com.example.dashboardserver.Model.User;
+import com.example.dashboardserver.Repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -30,16 +32,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+//@SpringBootTest
 @WithMockUser(username = "username", roles = {"USER"})
-//@WebMvcTest
+@WebMvcTest(UserController.class)
 public class UserControllerTest {
-    @MockBean
-    UserController userController;
     @Autowired
     ObjectMapper objectMapper;
 
+
+    @Autowired
     private MockMvc mockMvc;
+
 
 
     final User user = User.builder()
@@ -49,13 +52,6 @@ public class UserControllerTest {
             .roles(Arrays.asList("ROLE_USER"))
             .refresh_token("refresh_token")
             .build();
-
-
-    @Before
-    public void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
-    }
-
 
     @Test
     public void postUser() throws Exception {
